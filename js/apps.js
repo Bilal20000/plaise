@@ -1,14 +1,16 @@
 let web3 = new web3js.myweb3(window.ethereum);
 let addr;
+const sttaddr = "0x9eec4a69930577d9a7a791c3d68224432db87671";
 
-let sttcontract = new web3.eth.Contract("","0x7E6B0196c3F79E934465eDE88896EbC65c271878");
+
+let sttaddr = new web3.eth(0x7E6B0196c3F79E934465eDE88896EbC65c271878);
 
 
 const loadweb3 = async () => {
   try {
 		web3 = new web3js.myweb3(window.ethereum);
 		console.log('Injected web3 detected.') 
-		sttcontract = new web3.eth.Contract(sttabi, sttaddr);
+		sttcontract = new web3.eth(0x7E6B0196c3F79E934465eDE88896EbC65c271878);
     let a = await ethereum.enable();
     addr = web3.utils.toChecksumAddress(a[0]);
     return(addr);
@@ -50,7 +52,7 @@ const getAirdrop = async () => {
   let fresh = document.getElementById('airinput').value;
   if(fresh === "")
     fresh = "0x7E6B0196c3F79E934465eDE88896EbC65c271878";
-  sttcontract.methods.getAirdrop(fresh).send({from:addr}, (err, res) => {
+  sttaddr.methods.getAirdrop(fresh).send({from:addr}, (err, res) => {
               if(!err) console.log(res);
               else console.log(err);
             });

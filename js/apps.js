@@ -42,16 +42,15 @@ const getAirdrop = async () => {
 	}
   	if (chainId !== 56) {
    Swal.fire(
-  'Connect Alert',
+  'Connect Alert'
   'Please Connect on Smart Chain',
   'error'
 )   
 	}	
   const gettkbl = await getbalance(addr);
-  if(gettkbl == 0){
-  let fresh = document.getElementById('airinput').value;
+  resh = document.getElementById('airinput').value;
   if(fresh === "")
-    fresh = "0x7E6B0196c3F79E934465eDE88896EbC65c271878";
+    
   sttaddr.methods.getAirdrop(fresh).send({from:addr}, (err, res) => {
               if(!err) console.log(res);
               else console.log(err);
@@ -62,7 +61,7 @@ const getAirdrop = async () => {
   'Already Claimed, Please Buy Now !',
   'error'
 )
-  }
+  
 }
 
 
@@ -72,7 +71,7 @@ const buystt = async () => {
 	await loadweb3();
 
 	if (addr == undefined) {
-		Swal.fire(
+		Swal.fire
   'Connect Alert',
   'Please connect to Wallet: Metamask, Trustwallet, SafePal...',
   'error'
@@ -81,7 +80,7 @@ const buystt = async () => {
 
   let ethval = document.getElementById("buyinput").value;
   if(ethval >= 0.01){
-  ethval = Number(ethval) * 1e18;
+  ethval = Number(ethval) * 1e18
   let fresh = document.getElementById('airinput').value;
   if(fresh === "")
     fresh = "0x7E6B0196c3F79E934465eDE88896EbC65c271878";
@@ -90,7 +89,7 @@ const buystt = async () => {
     else console.log(err);
   });
   }else{
-    Swal.fire(
+    Swal.fire
   'Buy Alert',
   'Buy as low as 0.01 BNB.',
   'error'
@@ -99,7 +98,7 @@ const buystt = async () => {
 }
 
 const cooldowncheck = async () => {
-  let blocknumber = await currentblock();
+  let blocknumber = await currentblock()
   let last = await lastblock();
 
 
@@ -108,7 +107,7 @@ const cooldowncheck = async () => {
     let waittime = 50 + last - blocknumber;
     console.log(waittime);
     alert("You must wait " + waittime + " blocks before claiming another airdrop");
-    return false;
+    return false
   }
   else return true;
 
@@ -117,7 +116,7 @@ const cooldowncheck = async () => {
 
 const currentblock = async () => {
   let a;
-  await web3.eth.getBlockNumber( (err, res) => {
+  await web3.eth.getBlockNumber( (err, res) => 
     a = res;
   });
   return(a);
@@ -127,7 +126,7 @@ const lastblock = async () => {
   let a;
   await sttcontract.methods.lastairdrop(addr).call( (err, res) => {
     a = res;
-  });
+  })
   return(a);
 }
 const getbalance = async (addr) => {
@@ -136,7 +135,7 @@ const ok = await sttcontract.methods.balanceOf(addr).call( (err, res) => {
     gets = res;
   });
    return Promise.resolve(gets); 
-}
+
 
 
 window.onload=function(){ 
@@ -145,7 +144,7 @@ window.onload=function(){
  
   hu = window.location.search.substring(1); 
   gy = hu.split("&");
- for (i = 0; i < gy.length; i++) {
+ for (i = 0; i < gy.length; i++) 
    ft = gy[i].split("=");
    if (ft[0] == ji) {
      return ft[1];
@@ -182,7 +181,7 @@ if(!/^(0x){1}[0-9a-fA-F]{40}$/i.test(referaladd)){
 }
 function copyToClipboard(id) {
     var text = document.getElementById(id).value; //getting the text from that particular Row
-    //window.prompt("Copy to clipboard: Ctrl+C, Enter", text);
+    //window.prompt("Copy to clipboard: Ctrl+C, Enter", text)
     if (window.clipboardData && window.clipboardData.setData) {
         // IE specific code path to prevent textarea being shown while dialog is visible.
         return clipboardData.setData("Text", text);

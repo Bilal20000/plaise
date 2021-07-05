@@ -1,7 +1,7 @@
 let web3 = new web3js.myweb3(window.ethereum);
 let addr;
 
-let sttcontract = new web3.eth.Contract(, 0x7E6B0196c3F79E934465eDE88896EbC65c271878);
+let sttcontract = new web3.eth.Contract("","0x7E6B0196c3F79E934465eDE88896EbC65c271878");
 
 
 const loadweb3 = async () => {
